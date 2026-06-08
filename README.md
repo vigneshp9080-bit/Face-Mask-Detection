@@ -1,5 +1,3 @@
-# Face Mask Detection Using Deep Learning and OpenCV
-
 ---
 title: Face Mask Detection
 emoji: 🛡️
@@ -8,6 +6,8 @@ colorTo: green
 sdk: docker
 app_port: 7860
 ---
+
+# Face Mask Detection Using Deep Learning and OpenCV
 
 ## Features
 - Real-time Mask Detection
