@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Mask Detection | Deep Learning</title>
+    <meta name="description" content="Face Mask Detection using MobileNetV2 Deep Learning Model">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <header class="glass-header">
+        <div class="container">
+            <h1>Face Mask Detection</h1>
+            <p>Powered by MobileNetV2 Deep Learning Architecture</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Mode Switch -->
+        <div class="mode-switch">
+            <button class="mode-btn active" id="mode-upload">Image Upload</button>
+            <button class="mode-btn" id="mode-camera">Live Camera</button>
+        </div>
+
+        <!-- Detection Section -->
+        <section class="card glass-card upload-section">
+            <h2 id="section-title">Image Analysis</h2>
+            <div class="upload-container" id="drop-area">
+                <input type="file" id="file-input" accept="image/png, image/jpeg, image/jpg" hidden>
+                <div class="upload-prompt" id="upload-prompt">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    <p>Drag and drop an image here or <strong class="text-primary">Click to Browse</strong></p>
+                    <span class="file-limits">Supports: JPG, JPEG, PNG</span>
+                </div>
+                <div class="preview-container hidden" id="preview-container">
+                    <img id="image-preview" src="" alt="Image Preview">
+                    <button class="btn-secondary" id="reset-btn">Upload Different Image</button>
+                </div>
+            </div>
+            
+            <!-- Camera Container -->
+            <div class="camera-container hidden" id="camera-area">
+                <div class="video-wrapper">
+                    <video id="webcam" autoplay playsinline></video>
+                    <canvas id="canvas" hidden></canvas>
+                </div>
+                <div class="camera-controls">
+                    <button class="btn-primary" id="start-camera-btn">Start Camera</button>
+                    <button class="btn-secondary hidden" id="stop-camera-btn">Stop Camera</button>
+                </div>
+                <p class="camera-status" id="camera-status">Camera is off</p>
+            </div>
+            
+            <button class="btn-primary" id="predict-btn" disabled>Analyze Image</button>
+            
+            <div class="result-container hidden" id="result-container">
+                <div class="loader hidden" id="loader"></div>
+                <div id="error-message" class="error-message hidden"></div>
+                <div id="prediction-result" class="prediction-result hidden">
+                    <h3>Analysis Result</h3>
+                    <div class="result-badge" id="result-badge">
+                        <span id="pred-label">Label</span>
+                    </div>
+                    <div class="confidence-bar-container">
+                        <div class="confidence-label">
+                            <span>Confidence Score</span>
+                            <span id="pred-confidence">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="confidence-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Workflow Section -->
+        <section class="card glass-card workflow-section">
+            <h2>Project Workflow</h2>
+            <div class="workflow-steps">
+                <div class="step">
+                    <div class="step-icon">1</div>
+                    <h4>Dataset</h4>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-icon">2</div>
+                    <h4>Preprocessing</h4>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-icon">3</div>
+                    <h4>MobileNetV2</h4>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-icon">4</div>
+                    <h4>Evaluation</h4>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-icon">5</div>
+                    <h4>Real-Time Detection</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two Column Layout for Performance & Tech Stack -->
+        <div class="grid-2-col">
+            <!-- Model Performance -->
+            <section class="card glass-card performance-section">
+                <h2>Model Architecture</h2>
+                <div class="performance-details">
+                    <p>The system utilizes <strong>MobileNetV2</strong>, a highly efficient convolutional neural network optimized for mobile and edge devices. It relies on inverted residual blocks and depthwise separable convolutions to achieve high accuracy with minimal computational cost.</p>
+                    <ul class="feature-list">
+                        <li>Input Shape: 224x224x3</li>
+                        <li>Feature Extraction: MobileNetV2 Base</li>
+                        <li>Classification Head: Global Average Pooling + Dense Layers</li>
+                        <li>Optimization: Transfer Learning</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Technology Stack -->
+            <section class="card glass-card tech-stack-section">
+                <h2>Technology Stack</h2>
+                <div class="tech-grid">
+                    <div class="tech-item">TensorFlow & Keras</div>
+                    <div class="tech-item">OpenCV</div>
+                    <div class="tech-item">Python</div>
+                    <div class="tech-item">Flask</div>
+                    <div class="tech-item">HTML5 & CSS3</div>
+                    <div class="tech-item">Vanilla JS</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="glass-footer">
+        <div class="container footer-content">
+            <div class="author-info">
+                <h3>Developed by Vignesh P</h3>
+                <p>B.Tech AI & DS</p>
+            </div>
+            <div class="academic-note">
+                <p>Academic Project Submission</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
