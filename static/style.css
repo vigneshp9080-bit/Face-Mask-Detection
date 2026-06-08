@@ -321,10 +321,42 @@ main {
     border-color: #D1D5DB;
 }
 
+/* Analysis Layout Grid */
+.analysis-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: var(--transition);
+}
+
+.analysis-layout.has-results {
+    gap: 2rem;
+}
+
+@media (min-width: 868px) {
+    .analysis-layout.has-results {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+}
+
+.input-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.result-col {
+    width: 100%;
+}
+
 /* Results Section */
 .result-container {
-    margin-top: 2rem;
     animation: fadeIn 0.5s ease-out;
+    width: 100%;
+    height: 100%;
 }
 
 .loader {
@@ -349,6 +381,10 @@ main {
     border-radius: 1rem;
     padding: 2.5rem;
     border: 1px solid var(--glass-border);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .prediction-result h3 {

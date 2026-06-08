@@ -28,49 +28,56 @@
         <!-- Detection Section -->
         <section class="card glass-card upload-section">
             <h2 id="section-title">Image Analysis</h2>
-            <div class="upload-container" id="drop-area">
-                <input type="file" id="file-input" accept="image/png, image/jpeg, image/jpg" hidden>
-                <div class="upload-prompt" id="upload-prompt">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                    <p>Drag and drop an image here or <strong class="text-primary">Click to Browse</strong></p>
-                    <span class="file-limits">Supports: JPG, JPEG, PNG</span>
-                </div>
-                <div class="preview-container hidden" id="preview-container">
-                    <img id="image-preview" src="" alt="Image Preview">
-                    <button class="btn-secondary" id="reset-btn">Upload Different Image</button>
-                </div>
-            </div>
             
-            <!-- Camera Container -->
-            <div class="camera-container hidden" id="camera-area">
-                <div class="video-wrapper">
-                    <video id="webcam" autoplay playsinline></video>
-                    <canvas id="canvas" hidden></canvas>
-                </div>
-                <div class="camera-controls">
-                    <button class="btn-primary" id="start-camera-btn">Start Camera</button>
-                    <button class="btn-secondary hidden" id="stop-camera-btn">Stop Camera</button>
-                </div>
-                <p class="camera-status" id="camera-status">Camera is off</p>
-            </div>
-            
-            <button class="btn-primary" id="predict-btn" disabled>Analyze Image</button>
-            
-            <div class="result-container hidden" id="result-container">
-                <div class="loader hidden" id="loader"></div>
-                <div id="error-message" class="error-message hidden"></div>
-                <div id="prediction-result" class="prediction-result hidden">
-                    <h3>Analysis Result</h3>
-                    <div class="result-badge" id="result-badge">
-                        <span id="pred-label">Label</span>
-                    </div>
-                    <div class="confidence-bar-container">
-                        <div class="confidence-label">
-                            <span>Confidence Score</span>
-                            <span id="pred-confidence">0%</span>
+            <div class="analysis-layout" id="analysis-layout">
+                <div class="input-col">
+                    <div class="upload-container" id="drop-area">
+                        <input type="file" id="file-input" accept="image/png, image/jpeg, image/jpg" hidden>
+                        <div class="upload-prompt" id="upload-prompt">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            <p>Drag and drop an image here or <strong class="text-primary">Click to Browse</strong></p>
+                            <span class="file-limits">Supports: JPG, JPEG, PNG</span>
                         </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="confidence-fill"></div>
+                        <div class="preview-container hidden" id="preview-container">
+                            <img id="image-preview" src="" alt="Image Preview">
+                            <button class="btn-secondary" id="reset-btn">Upload Different Image</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Camera Container -->
+                    <div class="camera-container hidden" id="camera-area">
+                        <div class="video-wrapper">
+                            <video id="webcam" autoplay playsinline></video>
+                            <canvas id="canvas" hidden></canvas>
+                        </div>
+                        <div class="camera-controls">
+                            <button class="btn-primary" id="start-camera-btn">Start Camera</button>
+                            <button class="btn-secondary hidden" id="stop-camera-btn">Stop Camera</button>
+                        </div>
+                        <p class="camera-status" id="camera-status">Camera is off</p>
+                    </div>
+                    
+                    <button class="btn-primary" id="predict-btn" disabled>Analyze Image</button>
+                </div>
+                
+                <div class="result-col">
+                    <div class="result-container hidden" id="result-container">
+                        <div class="loader hidden" id="loader"></div>
+                        <div id="error-message" class="error-message hidden"></div>
+                        <div id="prediction-result" class="prediction-result hidden">
+                            <h3>Analysis Result</h3>
+                            <div class="result-badge" id="result-badge">
+                                <span id="pred-label">Label</span>
+                            </div>
+                            <div class="confidence-bar-container">
+                                <div class="confidence-label">
+                                    <span>Confidence Score</span>
+                                    <span id="pred-confidence">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="confidence-fill"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

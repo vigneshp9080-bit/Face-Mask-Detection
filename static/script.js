@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const predictBtn = document.getElementById('predict-btn');
     
     // Result Elements
+    const analysisLayout = document.getElementById('analysis-layout');
     const resultContainer = document.getElementById('result-container');
     const loader = document.getElementById('loader');
     const errorMessage = document.getElementById('error-message');
@@ -86,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             resetResults();
             resultContainer.classList.remove('hidden');
+            analysisLayout.classList.add('has-results');
             predictionResult.classList.remove('hidden'); 
             
             predLabel.textContent = 'Scanning...';
@@ -240,6 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!currentFile || currentMode !== 'upload') return;
 
         resultContainer.classList.remove('hidden');
+        analysisLayout.classList.add('has-results');
         loader.classList.remove('hidden');
         predictionResult.classList.add('hidden');
         hideError();
@@ -277,6 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loader.classList.add('hidden');
         }
         resultContainer.classList.remove('hidden');
+        analysisLayout.classList.add('has-results');
         predictionResult.classList.remove('hidden');
         hideError();
         
@@ -318,6 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showError(message) {
         resultContainer.classList.remove('hidden');
+        analysisLayout.classList.add('has-results');
         loader.classList.add('hidden');
         predictionResult.classList.add('hidden');
         errorMessage.textContent = message;
@@ -331,6 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function resetResults() {
         resultContainer.classList.add('hidden');
+        analysisLayout.classList.remove('has-results');
         loader.classList.add('hidden');
         predictionResult.classList.add('hidden');
         hideError();
